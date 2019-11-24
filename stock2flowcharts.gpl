@@ -141,6 +141,12 @@ plot \
 
 reset
 
+BANN1="Model by PlanB (Twitter \\@100trillionUSD)\n"
+BANN2="Chart by Michael Goldstein (Twitter \\@bitstein)\n"
+BANN3="Based on chart by Rob Wolfram (Twitter \\@hamal03)\n"
+BANN4="Data retrieved from coinmetrics.io"
+BANNER=BANN1.BANN2.BANN3.BANN4
+
 set terminal svg size 1600,960
 set termopt enhanced
 set output "chart-log-price-diff.svg"
@@ -157,6 +163,8 @@ set arrow 100 from 1262300400,0 to DETMAX,0 nohead lw 1 lc 'gray'
 set grid
 set key box opaque height 2 right
 set datafile separator ","
+set obj 4 rect at DETBANX, -2.75*.9 size char 41, char 4 front
+set label 4 at DETBANX, -2.75*.84 BANNER front center font 'Helvetica Narrow,11'
 
 plot "price-diffs.csv" using 1:2 with lines lw 2 lc 'red' t "S2F log price diff"
 
@@ -178,6 +186,8 @@ set arrow 100 from 1262300400,0 to DETMAX,0 nohead lw 1 lc 'gray'
 set grid
 set key box opaque height 2 right
 set datafile separator ","
+set obj 4 rect at DETBANX, -2.75*.9 size char 41, char 4 front
+set label 4 at DETBANX, -2.75*.84 BANNER front center font 'Helvetica Narrow,11'
 
 plot "price-diffs-14.csv" using 1:2 with lines lw 2 lc 'red' t "S2F log price diff
 
@@ -199,5 +209,7 @@ set arrow 100 from 1262300400,0 to DETMAX,0 nohead lw 1 lc 'gray'
 set grid
 set key box opaque height 2 right
 set datafile separator ","
+set obj 4 rect at DETBANX, -2.75*.9 size char 41, char 4 front
+set label 4 at DETBANX, -2.75*.84 BANNER front center font 'Helvetica Narrow,11'
 
 plot "price-diffs-100.csv" using 1:2 with lines lw 2 lc 'red' t "S2F log price diff
