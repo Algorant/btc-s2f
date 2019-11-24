@@ -153,6 +153,7 @@ set xrange [1262300400:DETMAX]
 set ylabel "Log difference" font "Helvetica,16"
 set yrange [-3:3.1]
 set title "Bitcoin daily stock-to-flow log price differences" font "Helvetica Bold,30"
+set arrow 100 from 1262300400,0 to DETMAX,0 nohead lw 1 lc 'gray'
 set grid
 set key box opaque height 2 right
 set datafile separator ","
@@ -173,6 +174,7 @@ set xrange [1262300400:DETMAX]
 set ylabel "Log difference" font "Helvetica,16"
 set yrange [-3:3.1]
 set title "Bitcoin daily stock-to-flow log price differences (14d moving average)" font "Helvetica Bold,30"
+set arrow 100 from 1262300400,0 to DETMAX,0 nohead lw 1 lc 'gray'
 set grid
 set key box opaque height 2 right
 set datafile separator ","
@@ -193,6 +195,7 @@ set xrange [1262300400:DETMAX]
 set ylabel "Log difference" font "Helvetica,16"
 set yrange [-3:3.1]
 set title "Bitcoin daily stock-to-flow log price differences (100d moving average)" font "Helvetica Bold,30"
+set arrow 100 from 1262300400,0 to DETMAX,0 nohead lw 1 lc 'gray'
 set grid
 set key box opaque height 2 right
 set datafile separator ","
