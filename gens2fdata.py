@@ -3,11 +3,12 @@
 # by the pseudonymous user "PlanB". De calculation is based on
 # daily price averages from blockstream.info.
 # The output serves as input data for a gnuplot script.
-# 
+#
 # Call the script with "--regen" to generate new data even
 # if no new data is available at blockstream
 
 # imports
+import math
 import sys
 import numpy as np
 import sqlite3
@@ -61,7 +62,7 @@ lnprice = list()
 p = 0 # halving period
 ncoins = 0 #number of coins in beginning of this period
 
-# Keep track of max and min values for placement of the 
+# Keep track of max and min values for placement of the
 # banner in the second chart
 tyminmax = { 'ph': 0, 'sh': 0 }
 
@@ -179,5 +180,25 @@ bashvar.write("SFPP2="+str(round(float(sf[idx]**slope*e2intc*e2rmse*2), 2))+"\n"
 bashvar.write("SFPM2="+str(round(float(sf[idx]**slope*e2intc/e2rmse/2), 2))+"\n")
 bashvar.close()
 
-if "--quiet" not in sys.argv:  print("Data files created")
+price_diffs = [math.log(price[i]) - lnpr_pred[i][0] for i in range(len(lnpr_pred))]
 
+pddata = open('price-diffs.csv', 'w')
+for i in range(len(price_diffs)):
+    pddata.write(','.join(str(x) for x in [dt[i], price_diffs[i]])+"\n")
+pddata.close()
+
+price_diffs_14 = [math.log(sum(price[i-14:i])/14) - lnpr_pred[i][0] for i in range(14, len(lnpr_pred))]
+
+pd14data = open('price-diffs-14.csv', 'w')
+for i in range(len(price_diffs_14)):
+    pd14data.write(','.join(str(x) for x in [dt[i], price_diffs_14[i]])+"\n")
+pd14data.close()
+
+price_diffs_100 = [math.log(sum(price[i-100:i])/100) - lnpr_pred[i][0] for i in range(100, len(lnpr_pred))]
+
+pd100data = open('price-diffs-100.csv', 'w')
+for i in range(len(price_diffs_100)):
+    pd100data.write(','.join(str(x) for x in [dt[i], price_diffs_100[i]])+"\n")
+pd100data.close()
+
+if "--quiet" not in sys.argv:  print("Data files created")
