@@ -1,4 +1,4 @@
-# Gnuplot script to generate the Stock to Flow graph 
+# Gnuplot script to generate the Stock to Flow graph
 # based on daily price and total bitcoins from blockstream.com
 #
 set terminal svg size 1600,960
@@ -139,4 +139,62 @@ plot \
      "sftime.csv" using 1:2 axes x1y1 with lines lw 2 lc '0x808080' t "S2F predicted price", \
      "sftime.csv" using 1:7 axes x1y1 with lines lw 2 lc 'red' t 'Daily US$'
 
+reset
 
+set terminal svg size 1600,960
+set termopt enhanced
+set output "chart-log-price-diff.svg"
+
+set timefmt "%s"
+set xdata time
+set format x "%b\n%Y"
+set xtics
+set xrange [1262300400:DETMAX]
+set ylabel "Log difference" font "Helvetica,16"
+set yrange [-3:3.1]
+set title "Bitcoin daily stock-to-flow log price differences" font "Helvetica Bold,30"
+set grid
+set key box opaque height 2 right
+set datafile separator ","
+
+plot "price-diffs.csv" using 1:2 with lines lw 2 lc 'red' t "S2F log price diff"
+
+reset
+
+set terminal svg size 1600,960
+set termopt enhanced
+set output "chart-log-price-diff-14.svg"
+
+set timefmt "%s"
+set xdata time
+set format x "%b\n%Y"
+set xtics
+set xrange [1262300400:DETMAX]
+set ylabel "Log difference" font "Helvetica,16"
+set yrange [-3:3.1]
+set title "Bitcoin daily stock-to-flow log price differences (14d moving average)" font "Helvetica Bold,30"
+set grid
+set key box opaque height 2 right
+set datafile separator ","
+
+plot "price-diffs-14.csv" using 1:2 with lines lw 2 lc 'red' t "S2F log price diff
+
+reset
+
+set terminal svg size 1600,960
+set termopt enhanced
+set output "chart-log-price-diff-100.svg"
+
+set timefmt "%s"
+set xdata time
+set format x "%b\n%Y"
+set xtics
+set xrange [1262300400:DETMAX]
+set ylabel "Log difference" font "Helvetica,16"
+set yrange [-3:3.1]
+set title "Bitcoin daily stock-to-flow log price differences (100d moving average)" font "Helvetica Bold,30"
+set grid
+set key box opaque height 2 right
+set datafile separator ","
+
+plot "price-diffs-100.csv" using 1:2 with lines lw 2 lc 'red' t "S2F log price diff
