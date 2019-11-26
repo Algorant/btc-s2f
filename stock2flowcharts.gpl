@@ -154,7 +154,8 @@ set output "chart-log-price-diff.svg"
 set timefmt "%s"
 set xdata time
 set format x "%b\n%Y"
-set xtics
+set ytics 0.5
+set mytics 5
 set xrange [1262300400:DETMAX]
 set ylabel "Log difference" font "Helvetica,16"
 set yrange [-3:3.1]
@@ -177,7 +178,8 @@ set output "chart-log-price-diff-14.svg"
 set timefmt "%s"
 set xdata time
 set format x "%b\n%Y"
-set xtics
+set ytics 0.5
+set mytics 5
 set xrange [1262300400:DETMAX]
 set ylabel "Log difference" font "Helvetica,16"
 set yrange [-3:3.1]
@@ -200,7 +202,8 @@ set output "chart-log-price-diff-100.svg"
 set timefmt "%s"
 set xdata time
 set format x "%b\n%Y"
-set xtics
+set ytics 0.5
+set mytics 5
 set xrange [1262300400:DETMAX]
 set ylabel "Log difference" font "Helvetica,16"
 set yrange [-3:3.1]
